@@ -1,0 +1,23 @@
+Employee: Alice
+SSN: 123456789, Age: 35
+Company: C001, Title: Manager, Start Date: 2020-01-01
+Division: Finance
+Job Descriptions:
+- Budget Planning
+- Risk Assessment
+Spouse: Bob, Anniversary: 2018-06-15
+Children:
+- Charlie, Age: 6, Favorite Toy: Lego
+- Daisy, Age: 4, Favorite Toy: Barbie
+
+---------------------------------------
+
+Employee: John
+SSN: 987654321, Age: 29
+Company: C002, Title: Developer, Start Date: 2021-03-10
+Division: Engineering
+Job Descriptions:
+- Backend Development
+- API Integration
+(No spouse)
+(No children)
