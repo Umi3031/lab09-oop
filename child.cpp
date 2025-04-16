@@ -1,18 +1,13 @@
-// child.h
-#ifndef CHILD_H
-#define CHILD_H
+// Child.cpp
+#include "child.h"
 
-#include "person.h"
-#include <string>
+Child::Child(string name, string ssn, int age, string toy)
+    : Person(name, ssn, age), favoriteToy(toy) {}
 
-class Child : public Person {
-private:
-    string favoriteToy;
+string Child::getFavoriteToy() const {
+    return favoriteToy;
+}
 
-public:
-    Child(string name = "", string ssn = "", int age = 0, string toy = "");
-    string getFavoriteToy() const;
-    void setFavoriteToy(const string&);
-};
-
-#endif
+void Child::setFavoriteToy(const string& toy) {
+    favoriteToy = toy;
+}
