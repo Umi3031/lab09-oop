@@ -1,8 +1,8 @@
 lab11/
 ├── main.cpp
-├── Person.h / Person.cpp
-├── Employee.h / Employee.cpp
-├── Spouse.h / Spouse.cpp
-├── Child.h / Child.cpp
-├── Division.h / Division.cpp
-├── JobDescription.h / JobDescription.cpp
+├── person.h / person.cpp
+├── employee.h / employee.cpp
+├── spouse.h / spouse.cpp
+├── child.h / child.cpp
+├── division.h / division.cpp
+├── jobdescription.h / jobDescription.cpp
