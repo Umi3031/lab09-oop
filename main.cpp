@@ -1,29 +1,33 @@
-#include "employee.h"
-#include "division.h"
-#include "jobDescription.h"
-#include <iostream>
+#include "employee.h"          // Ажилтны классын толгойн файл
+#include "division.h"          // Хэлтсийн классын толгойн файл
+#include "jobDescription.h"    // Ажил үүргийн тодорхойлолтын класс
+#include <iostream>            // Оролт, гаралтын стандарт номын сан
 using namespace std;
 
 int main() {
     int empCount;
 
-    // Хэрэглэгчээс нийт ажилтны тоог оруулуулах
+    // Хэрэглэгчээс нийт хэдэн ажилтны мэдээлэл оруулахыг асууж байна
     cout << "Enter number of employees: ";
     cin >> empCount;
 
-    // Байгууллагын хэлтсүүд болон ажил үүргийн жагсаалтыг урьдчилан үүсгэх
+    // Байгууллагын хоёр хэлтэс үүсгэж байна: IT ба HR
     vector<Division> divisions = { Division("IT"), Division("HR") };
+
+    // Хоёр төрлийн ажил үүргийн тодорхойлолт үүсгэж байна
     vector<JobDescription> jobs = { JobDescription("Developer"), JobDescription("Manager") };
 
-    // Ажилтнуудын жагсаалт (заагч ашиглан хадгална)
+    // Ажилтны мэдээллийг хадгалах динамик заагч вектор
     vector<Employee*> employees;
 
-    // Хэрэглэгчээс ажилтны мэдээллийг нэг нэгээр нь асуух
+    // Ажилтнуудын мэдээллийг нэг нэгээр нь хэрэглэгчээс авч байна
     for (int i = 0; i < empCount; ++i) {
         string name, ssn, id, title, date;
         int age;
 
         cout << "\nEnter info for Employee #" << (i + 1) << ":\n";
+
+        // Ажилтны үндсэн мэдээллийг оруулах
         cout << "Name: "; cin >> name;
         cout << "SSN: "; cin >> ssn;
         cout << "Age: "; cin >> age;
@@ -31,47 +35,51 @@ int main() {
         cout << "Title: "; cin >> title;
         cout << "Start Date: "; cin >> date;
 
-        // Ажилтны шинэ объект үүсгэх
+        // Ажилтны объект үүсгэж, санах ойд хадгалах
         Employee* e = new Employee(name, ssn, age, id, title, date);
 
-        // Ажилтныг хэлтэст хуваарилах (давтагдах байдлаар)
+        // Ажилтныг аль нэг хэлтэст хуваарилах (дарааллын дагуу)
         e->setDivision(&divisions[i % divisions.size()]);
 
-        // Ажил үүргийг оноох (давтагдах байдлаар)
+        // Ажилтанд үүрэг хариуцлага нэмэх
         e->addJob(jobs[i % jobs.size()]);
 
-        // Эхнэр/нөхрийн мэдээлэл оруулах
+        // Эхнэр/нөхрийн талаарх мэдээллийг оруулах хэсэг
         string anniversary;
         cout << "Enter spouse anniversary date (or '-' if none): ";
         cin >> anniversary;
-        if (anniversary != "-")
-            e->setSpouse(new Spouse(anniversary)); // Хэрвээ байгаа бол spouse нэмэх
 
-        // Хүүхдийн тоог оруулж, дуртай тоглоомыг бүртгэх
+        // Хэрвээ '-' биш бол spouse объект үүсгэж ажилтанд онооно
+        if (anniversary != "-")
+            e->setSpouse(new Spouse(anniversary));
+
+        // Хүүхдүүдийн тоог асууж, бүртгэж байна
         int childCount;
         cout << "Enter number of children: ";
         cin >> childCount;
+
+        // Хүүхэд бүрийн дуртай тоглоомыг оруулж, объект болгон нэмэх
         for (int j = 0; j < childCount; ++j) {
             string toy;
             cout << "Favorite toy of child #" << (j + 1) << ": ";
             cin >> toy;
-            e->addChild(Child(toy)); // Хүүхэд бүртгэх
+            e->addChild(Child(toy));
         }
 
-        // Ажилтныг жагсаалтанд нэмэх
+        // Ажилтныг нийт ажилтны жагсаалтанд нэмэх
         employees.push_back(e);
     }
 
-    // Бүх ажилтны мэдээллийг хэвлэх
+    // Бүх ажилтнуудын мэдээллийг хэвлэж гаргах
     for (Employee* e : employees) {
         cout << "\n------ EMPLOYEE INFO ------\n";
         e->printInfo();
     }
 
-    // Нийт ажилтны тоог хэвлэх
+    // Нийт ажилтнуудын тоог харуулах (static гишүүн функц ашиглаж)
     cout << "\nTotal Employees: " << Employee::getEmployeeCount() << endl;
 
-    // Динамик санах ойг чөлөөлөх (clean-up)
+    // Динамик санах ойг цэвэрлэж, заагчдыг устгаж байна
     for (Employee* e : employees)
         delete e;
 
