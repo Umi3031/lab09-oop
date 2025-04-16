@@ -1,24 +1,25 @@
-#ifndef SPOUSE_H
-#define SPOUSE_H
+#include "spouse.h"
+#include "person.h"  // Удамшсан тул Person-ыг include хийв
+#include <iostream>
 
-#include "person.h"  // Person классыг ашиглахын тулд оруулж ирж байна
-#include <string>
-using namespace std;
+// Constructor: Person классын гишүүдийг эхэлж оноож, дараа нь anniversaryDate-г онооно
+Spouse::Spouse(string name, string ssn, int age, string anniversaryDate)
+    : Person(name, ssn, age), anniversaryDate(anniversaryDate) {}
 
-// Spouse класс нь Person классыг удамшуулж, гэрлэсэн хүний нэмэлт мэдээлэл хадгална.
-class Spouse : public Person {
-    string anniversaryDate;  // Гэрлэлтийн ой тэмдэглэсэн огноо
+// Гэрлэлт ойг буцаана
+string Spouse::getAnniversaryDate() const {
+    return anniversaryDate;
+}
 
-public:
-    // Constructor: нэр, ssn, нас болон гэрлэлт ойг өгч болно
-    Spouse(string name = "", string ssn = "", int age = 0, string anniversaryDate = "");
+// Гэрлэлт ойг шинэчилж хадгална
+void Spouse::setAnniversaryDate(const string& date) {
+    anniversaryDate = date;
+}
 
-    // Getter ба Setter функцүүд
-    string getAnniversaryDate() const;             // Гэрлэлт ойг буцаах
-    void setAnniversaryDate(string anniversaryDate); // Гэрлэлт ойг шинэчлэх
-
-    // Person классын pure virtual функцийг хэрэгжүүлнэ
-    void printInfo() const override;
-};
-
-#endif
+// Person классын pure virtual функц - энэ класст мэдээлэл хэвлэх зориулалттай
+void Spouse::printInfo() const {
+    cout << "Name: " << getName() << endl;
+    cout << "SSN: " << getSSN() << endl;
+    cout << "Age: " << getAge() << endl;
+    cout << "Anniversary Date: " << anniversaryDate << endl;
+}
