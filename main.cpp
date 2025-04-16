@@ -1,6 +1,6 @@
-#include "Employee.h"
-#include "Division.h"
-#include "JobDescription.h"
+#include "employee.h"
+#include "division.h"
+#include "jobDescription.h"
 #include <iostream>
 using namespace std;
 
