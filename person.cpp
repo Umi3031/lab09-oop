@@ -1,5 +1,5 @@
 // Person.cpp
-#include "Person.h"
+#include "person.h"
 
 Person::Person(string name, string ssn, int age)
     : name(name), ssn(ssn), age(age) {}
