@@ -1,5 +1,5 @@
 // JobDescription.cpp
-#include "JobDescription.h"
+#include "jobdescription.h"
 
 JobDescription::JobDescription(string desc) : description(desc) {}
 
