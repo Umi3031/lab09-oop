@@ -1,5 +1,5 @@
 // Division.cpp
-#include "Division.h"
+#include "division.h"
 
 Division::Division(string name) : divisionName(name) {}
 
