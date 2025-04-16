@@ -1,11 +1,11 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 
-#include "Person.h"
-#include "Spouse.h"
-#include "Child.h"
-#include "Division.h"
-#include "JobDescription.h"
+#include "person.h"
+#include "spouse.h"
+#include "child.h"
+#include "division.h"
+#include "jobdescription.h"
 #include <vector>
 
 class Employee : public Person {
